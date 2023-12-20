@@ -7,5 +7,22 @@
 <body>
     <h1 th:text="${title}"></h1>
     <div th:if="${users.size() == 0}" th:text="${'Does not have user elements'}"></div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Lastname</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user: ${users}">
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.lastname}"></td>
+                <td th:if="${user.email}" th:text="${user.email}"></td>
+                <td th:if="${not (user.email != null)}" th:text="${'-'}"></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
