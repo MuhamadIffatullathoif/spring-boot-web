@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api")
@@ -19,6 +18,21 @@ public class UserRestController {
         userDto.setUser(user);
         userDto.setTitle("Hello World Spring boot");
         return userDto;
+    }
+
+    @GetMapping("/list")
+    public List<User> list() {
+        User user = new User("Muhammad", "Iffat");
+        User user1 = new User("Iffat", "Muhammad");
+
+        /* Single line */
+        List<User> users = Arrays.asList(user, user1);
+
+        /* Multi line */
+        // List<User> users = new ArrayList<>();
+        // users.add(user);
+        // users.add(user1);
+        return users;
     }
 
     @GetMapping("/details2-map")
