@@ -11,7 +11,7 @@ import java.util.*;
 @RestController
 @RequestMapping("/api")
 public class UserRestController {
-    @GetMapping("/details2")
+    @GetMapping("/details")
     public UserDto details() {
         User user = new User("Muhamad", "Iffat");
         UserDto userDto = new UserDto();
