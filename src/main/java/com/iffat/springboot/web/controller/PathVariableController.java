@@ -21,6 +21,12 @@ public class PathVariableController {
     @Value("${config.listOfValues}")
     private String[] listOfValues;
 
+    @Value("#{'${config.listOfValues}'.toUpperCase().split(',')}")
+    private String[] valueList;
+
+    @Value("#{'${config.listOfValues}'.toUpperCase()}")
+    private String valueString;
+
     @GetMapping("/values")
     public Map<String, Object> values(@Value("${config.message}") String message) {
         Map<String, Object> json = new HashMap<>();
@@ -28,6 +34,8 @@ public class PathVariableController {
         json.put("code", code);
         json.put("listOfValues", listOfValues);
         json.put("message", message);
+        json.put("valueList", valueList);
+        json.put("valueString", valueString);
         return json;
     }
 
