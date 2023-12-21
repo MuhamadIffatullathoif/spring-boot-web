@@ -2,6 +2,7 @@ package com.iffat.springboot.web.controller;
 
 import com.iffat.springboot.web.model.dto.ParamDto;
 import com.iffat.springboot.web.model.dto.ParamMixDto;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +24,20 @@ public class RequestParamsController {
         ParamMixDto paramMixDto = new ParamMixDto();
         paramMixDto.setMessage(text);
         paramMixDto.setCode(code);
+        return paramMixDto;
+    }
+
+    @GetMapping("/request")
+    public ParamMixDto request(HttpServletRequest request) {
+        int code = 10;
+        try {
+            code = Integer.parseInt(request.getParameter("code"));
+        } catch (NumberFormatException exception) {
+
+        }
+        ParamMixDto paramMixDto = new ParamMixDto();
+        paramMixDto.setCode(code);
+        paramMixDto.setMessage(request.getParameter("message"));
         return paramMixDto;
     }
 }
